@@ -5,13 +5,12 @@ A Financial Company framework for our Advanced Software Development course at Ma
 to build use the terminal script `build.sh`
 ```shell script
 chmod +x build.sh # use it only once to give executable permission to the file
-./build.sh
+./build.sh [bank|ccard]
 ```
-and run with: `java -jar bank.jar`
+and run with: `java -jar target/bank.jar` or `java -jar target/ccard.jar`
 
 if using windows write the following commands
 ```shell script
-mvn package
+mvn -Pbank clean package
+mvn -Pccard clean package
 ```
-
-then run with: `java -jar target/finco.jar`

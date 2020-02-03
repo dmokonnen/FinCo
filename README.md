@@ -14,3 +14,9 @@ if using windows write the following commands
 mvn -Pbank clean package
 mvn -Pccard clean package
 ```
+
+# Design
+## Class Diagram
+<img src="./docs/fwUML.png"/>
+
+## @todo add sequence diagrams

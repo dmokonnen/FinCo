@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 abstract public class Customer implements ICustomer {
-    private final List<IAccount> accounts = new ArrayList<>();
+    private final List<IAccount> accounts;
     private Address address;
+
+    public Customer(Address address) {
+        this.address = address;
+        accounts = new ArrayList<>();
+    }
 
     @Override
     public void addAccount(IAccount account) {

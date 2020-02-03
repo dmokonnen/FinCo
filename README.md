@@ -17,6 +17,6 @@ mvn -Pccard clean package
 
 # Design
 ## Class Diagram
-<img src="./docs/fwUML.png" width="800" height="800"/>
+<img src="./docs/fwUML.png"/>
 
 ## @todo add sequence diagrams

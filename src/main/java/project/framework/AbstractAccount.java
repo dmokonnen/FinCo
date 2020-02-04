@@ -9,8 +9,8 @@ import java.util.List;
  */
 public abstract class AbstractAccount implements IAccount{
     private Double balance;
-    private String accountNo;
-    private ICustomer customer;
+    protected String accountNo;
+    protected ICustomer customer;
     private List<ITransaction> transactions=new ArrayList<>();
 
     public void addTransaction(ITransaction transaction){

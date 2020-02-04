@@ -31,6 +31,17 @@ The Factory Pattern is a creational design pattern used to create objects.
 
 In FinCo framework we use it to create Account and Customer instances.
 
+# Plug Points in the Framework
+* [x] ICustomer: A interface for specifying basic Customer information. Clients can implement it if the need for more customer 
+            types arise. Organization and Person Customers already exist in the system.
+* [x] AbstractAccount: An abstract class for specifying basic customer related account.
+* [x] AccountManager: A class for dispatching commands. Clients can use it as is or override to implement their own logic.
+* [x] AccountFactory: A class for creating Accounts. Clients must override it to create their own account objects.
+* [x] CustomerFactory: A class for creating Customers. Clients can use it as is or override it if more Customer 
+                        types are present in their applications.
+* [x] MainWindow: A class for specifying the main layout of the application.
+* [x] AddAccountDialog: A class for specifying the Dialog window of adding an account.
+
 # Build
 to build use the terminal script `build.sh`
 ```shell script

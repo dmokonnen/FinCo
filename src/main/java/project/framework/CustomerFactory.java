@@ -7,6 +7,7 @@ import java.util.Date;
  * @2020
  */
 public class CustomerFactory {
+
     public ICustomer createOrganization(String name, String email, Address address){
         return new Organization(name,email,address);
     }

@@ -86,7 +86,9 @@ public class WithdrawDialog extends javax.swing.JDialog {
 			parentframe.amountDeposit= Double.parseDouble(JTextField_AMT.getText());
 			if (parentframe.amountDeposit < 0)
 				throw new NumberFormatException();
-			FinCo.withdraw(accnr, parentframe.amountDeposit);
+
+			// TODO: Fire Withdraw Command Here
+
 			parentframe.newAccount =true;
 			dispose();
 		} catch (Exception e) {

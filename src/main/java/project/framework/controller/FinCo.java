@@ -1,11 +1,13 @@
 package project.framework.controller;
 
+import project.bank.BankFrm;
 import project.framework.model.AccountManager;
 import project.framework.model.IAccount;
 import project.framework.model.IAccountManager;
 import project.framework.model.ICustomer;
 import project.framework.view.MainWindow;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,24 @@ public class FinCo {
 
     public static void main(String[] args) {
 
-        (new MainWindow()).setVisible(true);
+        try {
+            // Add the following code if you want the Look and Feel
+            // to be set to the Look and Feel of the native system.
+
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            }
+            catch (Exception e) {
+            }
+
+            //Create a new instance of our application's frame, and make it visible.
+            (new MainWindow()).setVisible(true);
+        }
+        catch (Throwable t) {
+            t.printStackTrace();
+            //Ensure the application exits with an error condition.
+            System.exit(1);
+        }
 
     }
 

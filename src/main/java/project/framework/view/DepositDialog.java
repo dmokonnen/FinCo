@@ -90,7 +90,9 @@ public class DepositDialog extends javax.swing.JDialog {
 			parentframe.amountDeposit=Double.parseDouble(JTextField_Deposit.getText());
 			if (parentframe.amountDeposit < 0)
 				throw new NumberFormatException();
-			FinCo.deposit(accnr,parentframe.amountDeposit);
+
+			// TODO: Fire Deposit Command Here
+
 			parentframe.newAccount =true;
 			dispose();
 		} catch (Exception e) {

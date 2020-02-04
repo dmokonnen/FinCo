@@ -1,4 +1,6 @@
-package project.framework;
+package project.framework.controller;
+
+import project.framework.model.Account;
 
 /**
  * @author Demisew Mokonnen

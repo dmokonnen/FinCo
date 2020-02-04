@@ -1,4 +1,4 @@
-package project.framework;
+package project.framework.model;
 
 public interface IOrganization extends ICustomer {
     void addEmployee(IPerson employee);

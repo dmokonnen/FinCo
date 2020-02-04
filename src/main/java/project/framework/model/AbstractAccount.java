@@ -1,4 +1,4 @@
-package project.framework;
+package project.framework.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * @2020
  */
 public abstract class AbstractAccount implements IAccount{
-    private Double balance;
+    private Double balance = 0.0;
     protected String accountNo;
     protected ICustomer customer;
     private List<ITransaction> transactions=new ArrayList<>();

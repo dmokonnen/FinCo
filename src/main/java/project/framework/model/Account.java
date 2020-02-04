@@ -1,4 +1,4 @@
-package project.framework;
+package project.framework.model;
 
 /**
  * @author Demisew Mokonnen

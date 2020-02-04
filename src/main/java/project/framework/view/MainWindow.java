@@ -8,8 +8,7 @@ import project.framework.model.ICustomer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -82,7 +81,17 @@ public class MainWindow  extends javax.swing.JFrame {
 			}
 		});
 		removeAccountButton.addActionListener((e)->{
-			System.out.println("should remove an account");
+			String accNo = ((Vector)model.getDataVector().get(JTable1.getSelectedRow())).get(0).toString();
+			for(Iterator<ICustomer> i = customers.iterator(); i.hasNext(); ) {
+				ICustomer c = i.next();
+				for(Iterator<IAccount> ia= c.getAccounts().iterator(); ia.hasNext(); ) {
+					IAccount a = ia.next();
+					if(a.getAccountNo().equals(accNo)) {
+						ia.remove();
+					}
+				}
+			}
+			model.removeRow(JTable1.getSelectedRow());
 		});
 	}
 

@@ -12,6 +12,5 @@ public class FinCo {
 
         FinCo finCo = new FinCo(new AccountManager());
 
-
     }
 }

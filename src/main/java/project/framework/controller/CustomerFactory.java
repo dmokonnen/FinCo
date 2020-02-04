@@ -1,4 +1,9 @@
-package project.framework;
+package project.framework.controller;
+
+import project.framework.model.Address;
+import project.framework.model.ICustomer;
+import project.framework.model.Organization;
+import project.framework.model.Person;
 
 import java.util.Date;
 

@@ -81,7 +81,9 @@ public class MainWindow  extends javax.swing.JFrame {
 			}
 		});
 		removeAccountButton.addActionListener((e)->{
-			String accNo = ((Vector)model.getDataVector().get(JTable1.getSelectedRow())).get(0).toString();
+			int selected = JTable1.getSelectedRow();
+			if(selected<0) return;
+			String accNo = ((Vector)model.getDataVector().get(selected)).get(0).toString();
 			for(Iterator<ICustomer> i = customers.iterator(); i.hasNext(); ) {
 				ICustomer c = i.next();
 				for(Iterator<IAccount> ia= c.getAccounts().iterator(); ia.hasNext(); ) {
@@ -91,7 +93,7 @@ public class MainWindow  extends javax.swing.JFrame {
 					}
 				}
 			}
-			model.removeRow(JTable1.getSelectedRow());
+			model.removeRow(selected);
 		});
 	}
 

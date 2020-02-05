@@ -11,6 +11,11 @@ public class Transaction implements ITransaction {
     private Double amount;
     private Date date;
 
+    public Transaction(String name, Double amount, Date date) {
+        this.name = name;
+        this.amount = amount;
+        this.date = date;
+    }
 
     //===setters and getters =========
 

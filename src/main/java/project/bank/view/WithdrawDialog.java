@@ -1,17 +1,13 @@
-package project.bank;
-
-import java.awt.*;
-import javax.swing.*;
+package project.bank.view;
 
 
-
-public class JDialog_Withdraw extends javax.swing.JDialog
+public class WithdrawDialog extends javax.swing.JDialog
 {
    
     private BankFrm parentframe;
     private String accnr;
 
-	public JDialog_Withdraw(BankFrm parent, String aaccnr)
+	public WithdrawDialog(BankFrm parent, String aaccnr)
 	{
 		super(parent);
 		parentframe=parent;
@@ -83,9 +79,7 @@ public class JDialog_Withdraw extends javax.swing.JDialog
 		}
 	}
 
-	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
-	{
-        parentframe.amountDeposit=JTextField_AMT.getText();
+	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
 		dispose();
 	}
 

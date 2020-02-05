@@ -1,10 +1,5 @@
 package project.ccard;
 
-import project.bank.BankFrm;
-
-import java.awt.*;
-import javax.swing.*;
-
 public class JDialog_Deposit extends javax.swing.JDialog
 {
     

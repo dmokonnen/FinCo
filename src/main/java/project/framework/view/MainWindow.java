@@ -53,15 +53,14 @@ public class MainWindow  extends javax.swing.JFrame {
 		this.addWindowListener(aSymWindow);
 	}
 
-	private void getButtonsOnRight(JPanel panel) {
-		JButton JButton_Exit = new JButton();
-		JButton_Exit.setText("Exit");
+	public void getButtonsOnRight(JPanel panel) {
+		JButton JButton_Exit = new JButton("Exit");
 		panel.add(JButton_Exit);
 		JButton_Exit.setBounds(468,248,96,31);
 		JButton_Exit.addActionListener((e)->System.exit(0));
 	}
 
-	private void getButtonsOnTop(JPanel panel) {
+	public void getButtonsOnTop(JPanel panel) {
 		JButton addAccountButton = new JButton();
 		JButton removeAccountButton = new JButton();
 		addAccountButton.setText("Add Account");

@@ -116,7 +116,7 @@ public class MainWindow  extends javax.swing.JFrame {
 		JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
 	}
 
-	private List<IAccount> getAccounts() {
+	public List<IAccount> getAccounts() {
 		List<IAccount> res = new ArrayList<>();
 		customers.forEach((c)->res.addAll(c.getAccounts()));
 		return res;

@@ -6,9 +6,9 @@ import project.framework.model.*;
 import project.framework.view.AddAccountDialog;
 import java.util.List;
 
-public class JDialog_AddPAcc extends AddAccountDialog {
+public class AddPersonalAccountDialog extends AddAccountDialog {
 
-	public JDialog_AddPAcc(BankFrm parent, List<ICustomer> customers) {
+	public AddPersonalAccountDialog(BankFrm parent, List<ICustomer> customers) {
 		super(parent, customers);
 		setTitle("Add personal account");
 		setModal(true);

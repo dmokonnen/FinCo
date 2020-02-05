@@ -4,7 +4,6 @@ import project.framework.model.ICustomer;
 import project.framework.view.MainWindow;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
@@ -40,7 +39,7 @@ public class BankFrm extends MainWindow {
 				String accnr = (String) model.getValueAt(selection, 0);
 
 				//Show the dialog for adding deposit amount for the current mane
-				JDialog_Deposit dep = new JDialog_Deposit(this, accnr);
+				DepositDialog dep = new DepositDialog(this, accnr);
 				dep.setBounds(430, 15, 275, 140);
 				dep.show();
 
@@ -63,7 +62,7 @@ public class BankFrm extends MainWindow {
 				String accnr = (String) model.getValueAt(selection, 0);
 
 				//Show the dialog for adding withdraw amount for the current mane
-				JDialog_Withdraw wd = new JDialog_Withdraw(this, accnr);
+				WithdrawDialog wd = new WithdrawDialog(this, accnr);
 				wd.setBounds(430, 15, 275, 140);
 				wd.show();
 
@@ -88,7 +87,7 @@ public class BankFrm extends MainWindow {
 		JButton JButton_PerAC = new JButton("Add personal account");
 		JButton_PerAC.setBounds(24, 20, 192, 33);
 		JButton_PerAC.addActionListener(e -> {
-			JDialog_AddPAcc pac = new JDialog_AddPAcc(this, customers);
+			AddPersonalAccountDialog pac = new AddPersonalAccountDialog(this, customers);
 			pac.setBounds(450, 20, 300, 330);
 			pac.show();
 
@@ -97,10 +96,10 @@ public class BankFrm extends MainWindow {
 			}
 		});
 
-		javax.swing.JButton JButton_CompAC = new javax.swing.JButton("Add company account");
+		javax.swing.JButton JButton_CompAC = new javax.swing.JButton("Add organization account");
 		JButton_CompAC.setBounds(240, 20, 192, 33);
 		JButton_CompAC.addActionListener(e -> {
-			JDialog_AddCompAcc pac = new JDialog_AddCompAcc(this, customers);
+			AddOrganizationAccountDialog pac = new AddOrganizationAccountDialog(this, customers);
 			pac.setBounds(450, 20, 300, 330);
 			pac.show();
 

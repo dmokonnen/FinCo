@@ -8,11 +8,11 @@ import javax.swing.*;
 import java.util.Date;
 import java.util.List;
 
-public class JDialog_AddCompAcc extends AddAccountDialog {
+public class AddOrganizationAccountDialog extends AddAccountDialog {
     private BankFrm parentframe;
     private final List<ICustomer> customers;
     
-	public JDialog_AddCompAcc(BankFrm parent, List<ICustomer> customers) {
+	public AddOrganizationAccountDialog(BankFrm parent, List<ICustomer> customers) {
 		super(parent, customers);
 		parentframe=parent;
 		this.customers = customers;

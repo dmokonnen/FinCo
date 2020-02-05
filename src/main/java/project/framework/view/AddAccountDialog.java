@@ -71,13 +71,10 @@ public class AddAccountDialog extends JDialog {
 		getContentPane().add(JLabel8);
 		JLabel8.setForeground(java.awt.Color.black);
 		JLabel8.setBounds(12,60,48,24);
-		//}}
 
-		//{{REGISTER_LISTENERS
 		SymAction lSymAction = new SymAction();
 		JButton_OK.addActionListener(lSymAction);
 		JButton_Cancel.addActionListener(lSymAction);
-		//}}
 	}
 
 
@@ -100,10 +97,8 @@ public class AddAccountDialog extends JDialog {
 	public javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
 
 
-	class SymAction implements java.awt.event.ActionListener
-	{
-		public void actionPerformed(java.awt.event.ActionEvent event)
-		{
+	class SymAction implements java.awt.event.ActionListener {
+		public void actionPerformed(java.awt.event.ActionEvent event) {
 			Object object = event.getSource();
 			if (object == JButton_OK)
 				JButtonOK_actionPerformed(event);
@@ -112,24 +107,38 @@ public class AddAccountDialog extends JDialog {
 		}
 	}
 
-	public void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
+	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
+		addTheAccount();
+		cancelled = false;
+		dispose();
+	}
+
+	private ICustomer getCustomer() {
 		Address address = new Address(JTextField_ST.getText(), JTextField_CT.getText(), JTextField_STR.getText() , JTextField_ZIP.getText());
 		ICustomer c = new Person(JTextField_NAME.getText(), new Date(), JTextField_EM.getText(), address);
 		ICustomer customer = customers.stream().filter((mc)->mc.equals(c)).findAny().orElse(c);
 		if(!customers.contains(customer)) {
 			customers.add(customer);
 		}
+		return customer;
+	}
+
+	public IAccount createAccount(ICustomer customer) {
 		IAccount account = new Account(customer, JTextField_ACNR.getText());
+		return account;
+	}
+
+	private void addTheAccount() {
+		ICustomer customer = getCustomer();
+		IAccount account = createAccount(customer);
 		customer.addAccount(account);
-		cancelled = false;
-		dispose();
 	}
 
 	public boolean isCancelled() {
 		return cancelled;
 	}
 
-	public void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
+	private void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
 		cancelled = true;
 		dispose();
 	}

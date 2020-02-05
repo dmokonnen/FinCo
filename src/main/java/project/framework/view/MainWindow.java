@@ -16,8 +16,6 @@ import java.util.List;
  */
 
 public class MainWindow  extends javax.swing.JFrame {
-	protected static MainWindow myframe;
-
 	protected DefaultTableModel model;
 	protected JTable JTable1;
 	protected JScrollPane JScrollPane1;
@@ -25,7 +23,6 @@ public class MainWindow  extends javax.swing.JFrame {
 
 	public MainWindow(List<ICustomer> customers) {
 		this.customers = customers;
-		myframe = this;
 		JPanel JPanel1 = new JPanel();
 
 		setTitle("FinCo");
@@ -71,7 +68,7 @@ public class MainWindow  extends javax.swing.JFrame {
 		removeAccountButton.setBounds(240,20,192,33);
 
 		addAccountButton.addActionListener((e)->{
-			AddAccountDialog addAccountDialog = new AddAccountDialog(myframe, customers);
+			AddAccountDialog addAccountDialog = new AddAccountDialog(this, customers);
 			addAccountDialog.setBounds(450, 20, 300, 330);
 			addAccountDialog.show();
 
@@ -96,7 +93,8 @@ public class MainWindow  extends javax.swing.JFrame {
 		});
 	}
 
-	private void drawTable() {
+	public void drawTable() {
+		JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
 		String[] columns = new String[] {
 				"AccountNr",
 				"Name",

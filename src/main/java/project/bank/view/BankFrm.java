@@ -27,6 +27,7 @@ public class BankFrm extends MainWindow {
 		setVisible(false);
 	}
 
+	// @TODO implement deposit and withdraw
 	@Override
 	public void getButtonsOnRight(JPanel panel) {
 		super.getButtonsOnRight(panel);
@@ -103,7 +104,7 @@ public class BankFrm extends MainWindow {
 			pac.setBounds(450, 20, 300, 330);
 			pac.show();
 
-			if (pac.isCancelled()) {
+			if (!pac.isCancelled()) {
 				drawTable();
 			}
 		});

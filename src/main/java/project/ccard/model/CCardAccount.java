@@ -10,16 +10,13 @@ public abstract class CCardAccount extends AbstractAccount {
     private Double monthlyInterest;
     private Double minimumPayment;
     public Double getCurrentBalance(){
-        //to be implemented
-        return null;
+        return getBalance();
     }
 
    public Double getLastMonthBalance(){
-        //to be implemented
         return null;
    }
    public Double getTotalMonthlyCredits(){
-        //to be implemented
         return null;
    }
    public Double getTotalMonthlyCharges(){
@@ -48,6 +45,6 @@ public abstract class CCardAccount extends AbstractAccount {
 
     @Override
     public String generateReport() {
-        return "credit card account report: " + getAccountNo();
+        return "Account: " + getAccountNo() + ", Balance: " + getCurrentBalance();
     }
 }

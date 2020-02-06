@@ -106,7 +106,7 @@ public class CardFrm extends MainWindow
 		JButton JButton_GenBill = new JButton("Generate Monthly bills");
 		JButton_GenBill.setBounds(240,20,192,33);
 		JButton_GenBill.addActionListener(e -> {
-			JDialogGenBill billFrm = new JDialogGenBill();
+			GenerateBillDialog billFrm = new GenerateBillDialog();
 			billFrm.setBounds(450, 20, 400, 350);
 			billFrm.show();
 		});

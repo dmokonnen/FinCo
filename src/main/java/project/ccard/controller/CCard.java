@@ -27,7 +27,7 @@ public class CCard extends FinCo {
             }
             catch (Exception e) {
             }
-            (new CardFrm(getCustomers())).setVisible(true);
+            (new CardFrm(getCustomers(), accountManager)).setVisible(true);
         }
         catch (Throwable t) {
             t.printStackTrace();

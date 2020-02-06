@@ -1,6 +1,7 @@
 package project.ccard.view;
 
 import project.framework.model.IAccount;
+import project.framework.model.IAccountManager;
 import project.framework.model.ICustomer;
 import project.framework.view.MainWindow;
 
@@ -11,22 +12,13 @@ import javax.swing.*;
 /***
  * A basic JFC based application.
  ***/
-public class CardFrm extends MainWindow
-{
-    /****
-     * init variables in the object
-     ****/
-    String clientName,street,city, zip, state,accountType,amountDeposit,expdate, ccnumber;
-    boolean newaccount;
-
-    CardFrm thisframe;
-    private Object rowdata[];
+public class CardFrm extends MainWindow {
     private final List<ICustomer> customers;
-    
-	public CardFrm(List<ICustomer> customers)
-	{
+    private final IAccountManager accountManager;
+	public CardFrm(List<ICustomer> customers, IAccountManager accountManager) {
 		super(customers);
 		this.customers=customers;
+		this.accountManager = accountManager;
 		
 		setTitle("Credit-card processing Application");
 		setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
@@ -45,21 +37,13 @@ public class CardFrm extends MainWindow
 			// get selected name
 			int selection = JTable1.getSelectionModel().getMinSelectionIndex();
 			if (selection >=0){
-				String name = (String)model.getValueAt(selection, 1);
+				IAccount account = getAccounts().get(selection);
 
 				//Show the dialog for adding deposit amount for the current mane
-				DepositDialog dep = new DepositDialog(this,name);
+				DepositDialog dep = new DepositDialog(this, account, accountManager);
 				dep.setBounds(430, 15, 275, 140);
 				dep.show();
-
-				// compute new amount
-//				long deposit = 0;
-
-				double deposit = Double.parseDouble(amountDeposit);
-				String samount = (String)model.getValueAt(selection, 3);
-				double currentamount = Double.parseDouble(samount);
-				Double newamount=currentamount+deposit;
-				model.setValueAt(String.valueOf(newamount),selection, 3);
+				drawTable();
 			}
 		});
 		JButton JButton_Withdraw = new JButton("Charge");
@@ -68,22 +52,14 @@ public class CardFrm extends MainWindow
 			// get selected name
 			int selection = JTable1.getSelectionModel().getMinSelectionIndex();
 			if (selection >=0){
-				String name = (String)model.getValueAt(selection, 0);
+				IAccount account = getAccounts().get(selection);
 
 				//Show the dialog for adding withdraw amount for the current mane
-				ChargeDialog wd = new ChargeDialog(thisframe,name);
+				ChargeDialog wd = new ChargeDialog(this, account, accountManager);
 				wd.setBounds(430, 15, 275, 140);
 				wd.show();
 
-				// compute new amount
-				long deposit = Long.parseLong(amountDeposit);
-				String samount = (String)model.getValueAt(selection, 3);
-				long currentamount = Long.parseLong(samount);
-				long newamount=currentamount-deposit;
-				model.setValueAt(String.valueOf(newamount),selection, 3);
-				if (newamount <0){
-					JOptionPane.showMessageDialog(JButton_Withdraw, " "+name+" Your balance is negative: $"+String.valueOf(newamount)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
-				}
+				drawTable();
 			}
 		});
 		panel.add(JButton_Deposit);

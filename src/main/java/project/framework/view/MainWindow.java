@@ -118,6 +118,7 @@ public class MainWindow  extends javax.swing.JFrame {
 	}
 
 	protected List<IAccount> getAccounts() {
+	
 		List<IAccount> res = new ArrayList<>();
 		customers.forEach((c)->res.addAll(c.getAccounts()));
 		return res;

@@ -23,7 +23,7 @@ public class Bank extends FinCo {
 			}
 			catch (Exception e) {
 			}
-			(new BankFrm(getCustomers())).setVisible(true);
+			(new BankFrm(getCustomers(), accountManager)).setVisible(true);
 		}
 		catch (Throwable t) {
 			t.printStackTrace();

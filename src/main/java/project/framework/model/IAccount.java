@@ -19,4 +19,8 @@ public interface IAccount {
     void setCustomer(ICustomer customer);
 
     List<ITransaction> getTransactions();
+
+    default String generateReport() {
+        return "This is a report";
+    }
 }

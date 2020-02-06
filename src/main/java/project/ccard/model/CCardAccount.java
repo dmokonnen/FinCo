@@ -44,5 +44,10 @@ public abstract class CCardAccount extends AbstractAccount {
     }
 
     public abstract Double getNewMonthlyBalance();
-   public abstract Double getNewAmountDue();
+    public abstract Double getNewAmountDue();
+
+    @Override
+    public String generateReport() {
+        return "credit card account report: " + getAccountNo();
+    }
 }

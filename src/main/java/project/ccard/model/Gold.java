@@ -1,13 +1,13 @@
 package project.ccard.model;
 
-import project.framework.model.Customer;
+import project.framework.model.ICustomer;
 
 /**
  * @author Demisew Mokonnen
  * @2020
  */
 public class Gold extends CCardAccount {
-    public Gold(Customer customer, String accountNumber) {
+    public Gold(ICustomer customer, String accountNumber) {
         this.customer = customer;
         this.accountNo = accountNumber;
         setMinimumPayment(0.1);

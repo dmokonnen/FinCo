@@ -1,6 +1,7 @@
 package project.ccard.model;
 
 import project.framework.model.Customer;
+import project.framework.model.ICustomer;
 
 /**
  * @author Demisew Mokonnen
@@ -9,7 +10,7 @@ import project.framework.model.Customer;
 public class Bronze extends CCardAccount {
 
 
-    public Bronze(Customer customer, String accountNumber) {
+    public Bronze(ICustomer customer, String accountNumber) {
         this.customer=customer;
         this.accountNo=accountNumber;
         setMinimumPayment(0.14);

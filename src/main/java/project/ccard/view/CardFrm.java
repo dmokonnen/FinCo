@@ -47,7 +47,7 @@ public class CardFrm extends MainWindow
 				String name = (String)model.getValueAt(selection, 0);
 
 				//Show the dialog for adding deposit amount for the current mane
-				DepositDialog dep = new DepositDialog(thisframe,name);
+				DepositDialog dep = new DepositDialog(this,name);
 				dep.setBounds(430, 15, 275, 140);
 				dep.show();
 
@@ -89,26 +89,16 @@ public class CardFrm extends MainWindow
 
 	@Override
 	public void getButtonsOnTop(JPanel panel) {
-		//super.getButtonsOnTop(panel);
+
 		JButton JButton_NewCCAccount = new JButton("Add Credit-card account");
 		JButton_NewCCAccount.setBounds(24,20,192,33);
 		JButton_NewCCAccount.addActionListener(e -> {
 			AddCreditCardAccountDialog ccac = new AddCreditCardAccountDialog(this,customers);
 			ccac.setBounds(450, 20, 300, 380);
 			ccac.show();
-
-			if (newaccount){
-				// add row to table
-				rowdata[0] = clientName;
-				rowdata[1] = ccnumber;
-				rowdata[2] = expdate;
-				rowdata[3] = accountType;
-				rowdata[4] = "0";
-				model.addRow(rowdata);
-				JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
-				newaccount=false;
+			if(!ccac.isCancelled()){
+				drawTable();
 			}
-
 		});
 		JButton JButton_GenBill = new JButton("Generate Monthly bills");
 		JButton_GenBill.setBounds(240,20,192,33);

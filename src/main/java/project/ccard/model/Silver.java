@@ -1,13 +1,14 @@
 package project.ccard.model;
 
 import project.framework.model.Customer;
+import project.framework.model.ICustomer;
 
 /**
  * @author Demisew Mokonnen
  * @2020
  */
 public class Silver extends CCardAccount {
-    public Silver(Customer customer, String accountNumber) {
+    public Silver(ICustomer customer, String accountNumber) {
         this.customer = customer;
         this.accountNo = accountNumber;
         setMinimumPayment(0.12);

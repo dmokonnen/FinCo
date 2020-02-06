@@ -2,15 +2,18 @@ package project.ccard.view;/*
 		A basic implementation of the JDialog class.
 */
 
-import project.ccard.view.CardFrm;
+import project.ccard.controller.CCardAccountFactory;
+import project.framework.model.Address;
 import project.framework.model.Customer;
+import project.framework.model.IAccount;
 import project.framework.model.ICustomer;
 import project.framework.view.AddAccountDialog;
 
+import javax.swing.*;
 import java.util.List;
 
-public class AddCreditCardAccountDialog extends AddAccountDialog
-{
+public class AddCreditCardAccountDialog extends AddAccountDialog {
+	CCardAccountFactory cCardAccountFactory=new CCardAccountFactory();
 	public AddCreditCardAccountDialog(CardFrm parent, List<ICustomer> customers)
 	{
 		super(parent, customers);
@@ -64,21 +67,14 @@ public class AddCreditCardAccountDialog extends AddAccountDialog
 		JButton_OK.setBounds(48,300,84,24);
 		JButton_Cancel.setBounds(156,300,84,24);
 
-
-
-
-
-
 		//}}
 	
 		//{{REGISTER_LISTENERS
 		SymMouse aSymMouse = new SymMouse();
 		JRadioButton_Gold.addMouseListener(aSymMouse);
 		JRadioButton_Silver.addMouseListener(aSymMouse);
-		SymAction lSymAction = new SymAction();
-		JButton_OK.addActionListener(lSymAction);
-		JButton_Cancel.addActionListener(lSymAction);
 		JRadioButton_Bronze.addMouseListener(aSymMouse);
+
 		//}}
 	}
 
@@ -136,46 +132,27 @@ public class AddCreditCardAccountDialog extends AddAccountDialog
 		JRadioButton_Gold.setSelected(false);
 		JRadioButton_Silver.setSelected(false);
 		JRadioButton_Bronze.setSelected(true);
-			 
 	}
 
-	class SymAction implements java.awt.event.ActionListener
-	{
-		public void actionPerformed(java.awt.event.ActionEvent event)
-		{
-			Object object = event.getSource();
-			if (object == JButton_OK)
-				JButtonOK_actionPerformed(event);
-			else if (object == JButton_Cancel)
-				JButtonCalcel_actionPerformed(event);
+	@Override
+	public ICustomer createObjectForCustomer(Address address) {
+		return super.createObjectForCustomer(address);
+	}
+
+	@Override
+	public IAccount createAccount(ICustomer customer) {
+		if(JRadioButton_Gold.isSelected()) {
+			return 	cCardAccountFactory.createGoldAccount(customer,
+					JTextField_CCNR.getText());
 		}
-	}
-
-	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event)
-	{
-//       parentframe.clientName=JTextField_NAME.getText();
-//       parentframe.street=JTextField_STR.getText();
-//       parentframe.city=JTextField_CT.getText();
-//       parentframe.zip=JTextField_ZIP.getText();
-//       parentframe.state=JTextField_ST.getText();
-//       parentframe.ccnumber=JTextField_CCNR.getText();
-//       parentframe.expdate=JTextField_ExpDate.getText();
-//       if (JRadioButton_Gold.isSelected())
-//           parentframe.accountType="Gold";
-//           else{
-//            if (JRadioButton_Silver.isSelected())
-//                parentframe.accountType="Silver";
-//                else
-//                parentframe.accountType="Bronze";
-//           }
-//
-//	   parentframe.newaccount=true;
-       dispose();
-	}
-
-	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)
-	{
-    //make this frame invisible if Cancel button is clicked
-        dispose();
+		else if(JRadioButton_Bronze.isSelected()){
+			return cCardAccountFactory.createBronzeAccount(customer,
+					JTextField_CCNR.getText());
+		}
+		else if(JRadioButton_Silver.isSelected()){
+			return cCardAccountFactory.createBronzeAccount(customer,
+					JTextField_CCNR.getText());
+		}
+		return null;
 	}
 }

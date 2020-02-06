@@ -1,4 +1,4 @@
-package project.ccard.controller;
+package project.ccard.model;
 
 import project.framework.model.IAccountCommand;
 

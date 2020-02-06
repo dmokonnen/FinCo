@@ -1,4 +1,4 @@
-package project.ccard.controller;
+package project.ccard.model;
 
 import project.framework.model.IAccountCommand;
 
@@ -6,7 +6,7 @@ import project.framework.model.IAccountCommand;
  * @author Demisew Mokonnen
  * @2020
  */
-public class DepositCommand implements IAccountCommand {
+public class ChargeCommand implements IAccountCommand {
     @Override
     public void execute() {
 

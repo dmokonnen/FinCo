@@ -1,6 +1,6 @@
 package project.ccard.model;
 
-import project.framework.model.Customer;
+import project.framework.model.IAccountCommand;
 import project.framework.model.ICustomer;
 
 /**
@@ -26,5 +26,16 @@ public class Bronze extends CCardAccount {
     @Override
     public Double getNewAmountDue() {
         return null;
+    }
+
+    /**
+     * @author Demisew Mokonnen
+     * @2020
+     */
+    public static class DepositCommand implements IAccountCommand {
+        @Override
+        public void execute() {
+
+        }
     }
 }

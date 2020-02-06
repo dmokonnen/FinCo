@@ -1,5 +1,6 @@
 package project.framework.controller;
 
+import project.framework.model.AccountManager;
 import project.framework.model.IAccount;
 import project.framework.model.IAccountManager;
 import project.framework.model.ICustomer;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class FinCo {
 
-    private static IAccountManager accountManager;
+    private static IAccountManager accountManager = new AccountManager();
     private static final List<ICustomer> customers = new ArrayList<>();
     private static final List<IAccount> accounts = new ArrayList<>();
     private static ICustomer currentCustomer;

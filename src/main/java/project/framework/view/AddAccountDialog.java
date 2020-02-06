@@ -71,39 +71,32 @@ public class AddAccountDialog extends JDialog {
 		getContentPane().add(JLabel8);
 		JLabel8.setForeground(java.awt.Color.black);
 		JLabel8.setBounds(12,60,48,24);
-		//}}
 
-		//{{REGISTER_LISTENERS
 		SymAction lSymAction = new SymAction();
 		JButton_OK.addActionListener(lSymAction);
 		JButton_Cancel.addActionListener(lSymAction);
-		//}}
 	}
 
+	public JLabel JLabel1 = new JLabel();
+	public JLabel JLabel2 = new JLabel();
+	public JLabel JLabel3 = new JLabel();
+	public JLabel JLabel4 = new JLabel();
+	public JLabel JLabel5 = new JLabel();
+	public JLabel JLabel6 = new JLabel();
+	public JTextField JTextField_NAME = new JTextField();
+	public JTextField JTextField_CT = new JTextField();
+	public JTextField JTextField_ST = new JTextField();
+	public JTextField JTextField_STR = new JTextField();
+	public JTextField JTextField_ZIP = new JTextField();
+	public JTextField JTextField_EM = new JTextField();
+	public JButton JButton_OK = new JButton();
+	public JButton JButton_Cancel = new JButton();
+	public JTextField JTextField_ACNR = new JTextField();
+	public JLabel JLabel8 = new JLabel();
 
 
-	public javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	public javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	public javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
-	public javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
-	public javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
-	public javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
-	public javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	public javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
-	public javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
-	public javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
-	public javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
-	public javax.swing.JTextField JTextField_EM = new javax.swing.JTextField();
-	public javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	public javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
-	public javax.swing.JTextField JTextField_ACNR = new javax.swing.JTextField();
-	public javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
-
-
-	class SymAction implements java.awt.event.ActionListener
-	{
-		public void actionPerformed(java.awt.event.ActionEvent event)
-		{
+	class SymAction implements java.awt.event.ActionListener {
+		public void actionPerformed(java.awt.event.ActionEvent event) {
 			Object object = event.getSource();
 			if (object == JButton_OK)
 				JButtonOK_actionPerformed(event);
@@ -112,24 +105,48 @@ public class AddAccountDialog extends JDialog {
 		}
 	}
 
-	public void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-		Address address = new Address(JTextField_ST.getText(), JTextField_CT.getText(), JTextField_STR.getText() , JTextField_ZIP.getText());
-		ICustomer c = new Person(JTextField_NAME.getText(), new Date(), JTextField_EM.getText(), address);
+	private void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
+		addTheAccount();
+		cancelled = false;
+		dispose();
+	}
+
+	private ICustomer getCustomer() {
+		Address address = getAddress();
+		ICustomer c = createObjectForCustomer(address);
 		ICustomer customer = customers.stream().filter((mc)->mc.equals(c)).findAny().orElse(c);
 		if(!customers.contains(customer)) {
 			customers.add(customer);
 		}
+		return customer;
+	}
+
+	private Address getAddress() {
+		return new Address(JTextField_ST.getText(), JTextField_CT.getText(), JTextField_STR.getText() , JTextField_ZIP.getText());
+	}
+
+	public ICustomer createObjectForCustomer(Address address) {
+		ICustomer customer =
+				new Person(JTextField_NAME.getText(), new Date(), JTextField_EM.getText(), address);
+		return customer;
+	}
+
+	public IAccount createAccount(ICustomer customer) {
 		IAccount account = new Account(customer, JTextField_ACNR.getText());
+		return account;
+	}
+
+	private void addTheAccount() {
+		ICustomer customer = getCustomer();
+		IAccount account = createAccount(customer);
 		customer.addAccount(account);
-		cancelled = false;
-		dispose();
 	}
 
 	public boolean isCancelled() {
 		return cancelled;
 	}
 
-	public void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
+	private void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
 		cancelled = true;
 		dispose();
 	}

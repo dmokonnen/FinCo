@@ -16,8 +16,6 @@ import java.util.List;
  */
 
 public class MainWindow  extends javax.swing.JFrame {
-	protected static MainWindow myframe;
-
 	protected DefaultTableModel model;
 	protected JTable JTable1;
 	protected JScrollPane JScrollPane1;
@@ -25,7 +23,6 @@ public class MainWindow  extends javax.swing.JFrame {
 
 	public MainWindow(List<ICustomer> customers) {
 		this.customers = customers;
-		myframe = this;
 		JPanel JPanel1 = new JPanel();
 
 		setTitle("FinCo");
@@ -53,15 +50,14 @@ public class MainWindow  extends javax.swing.JFrame {
 		this.addWindowListener(aSymWindow);
 	}
 
-	private void getButtonsOnRight(JPanel panel) {
-		JButton JButton_Exit = new JButton();
-		JButton_Exit.setText("Exit");
+	public void getButtonsOnRight(JPanel panel) {
+		JButton JButton_Exit = new JButton("Exit");
 		panel.add(JButton_Exit);
 		JButton_Exit.setBounds(468,248,96,31);
 		JButton_Exit.addActionListener((e)->System.exit(0));
 	}
 
-	private void getButtonsOnTop(JPanel panel) {
+	public void getButtonsOnTop(JPanel panel) {
 		JButton addAccountButton = new JButton();
 		JButton removeAccountButton = new JButton();
 		addAccountButton.setText("Add Account");
@@ -72,7 +68,7 @@ public class MainWindow  extends javax.swing.JFrame {
 		removeAccountButton.setBounds(240,20,192,33);
 
 		addAccountButton.addActionListener((e)->{
-			AddAccountDialog addAccountDialog = new AddAccountDialog(myframe, customers);
+			AddAccountDialog addAccountDialog = new AddAccountDialog(this, customers);
 			addAccountDialog.setBounds(450, 20, 300, 330);
 			addAccountDialog.show();
 
@@ -97,7 +93,8 @@ public class MainWindow  extends javax.swing.JFrame {
 		});
 	}
 
-	private void drawTable() {
+	public void drawTable() {
+		JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
 		String[] columns = new String[] {
 				"AccountNr",
 				"Name",
@@ -119,7 +116,7 @@ public class MainWindow  extends javax.swing.JFrame {
 		JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
 	}
 
-	private List<IAccount> getAccounts() {
+	public List<IAccount> getAccounts() {
 		List<IAccount> res = new ArrayList<>();
 		customers.forEach((c)->res.addAll(c.getAccounts()));
 		return res;

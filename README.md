@@ -3,10 +3,9 @@ A Financial Company framework for our Advanced Software Development course at Ma
 
 # Design
 ## Class Diagram
-<img src="./docs/fwUML.png"/>
+<img src="./docs/fwUML.png" alt="Framework UML Class Diagram"/>
 
-## @todo add sequence diagrams
-All Diagrams can be found under the docs directory
+All other Diagrams including this one can be found under the docs directory
 
 # Patterns Used
 ### 1. Party Pattern

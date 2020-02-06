@@ -5,7 +5,6 @@ import project.framework.view.MainWindow;
 
 import java.awt.*;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 
 /***
@@ -18,9 +17,7 @@ public class CardFrm extends MainWindow
      ****/
     String clientName,street,city, zip, state,accountType,amountDeposit,expdate, ccnumber;
     boolean newaccount;
-    private DefaultTableModel model;
-    private JTable JTable1;
-    private JScrollPane JScrollPane1;
+
     CardFrm thisframe;
     private Object rowdata[];
     private final List<ICustomer> customers;
@@ -50,7 +47,7 @@ public class CardFrm extends MainWindow
 				String name = (String)model.getValueAt(selection, 0);
 
 				//Show the dialog for adding deposit amount for the current mane
-				JDialog_Deposit dep = new JDialog_Deposit(thisframe,name);
+				DepositDialog dep = new DepositDialog(thisframe,name);
 				dep.setBounds(430, 15, 275, 140);
 				dep.show();
 
@@ -71,7 +68,7 @@ public class CardFrm extends MainWindow
 				String name = (String)model.getValueAt(selection, 0);
 
 				//Show the dialog for adding withdraw amount for the current mane
-				JDialog_Withdraw wd = new JDialog_Withdraw(thisframe,name);
+				ChargeDialog wd = new ChargeDialog(thisframe,name);
 				wd.setBounds(430, 15, 275, 140);
 				wd.show();
 
@@ -95,7 +92,7 @@ public class CardFrm extends MainWindow
 		JButton JButton_NewCCAccount = new JButton("Add Credit-card account");
 		JButton_NewCCAccount.setBounds(24,20,192,33);
 		JButton_NewCCAccount.addActionListener(e -> {
-			JDialog_AddCCAccount ccac = new JDialog_AddCCAccount(thisframe);
+			AddCreditCardAccountDialog ccac = new AddCreditCardAccountDialog(thisframe);
 			ccac.setBounds(450, 20, 300, 380);
 			ccac.show();
 

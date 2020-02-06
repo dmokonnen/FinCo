@@ -2,14 +2,14 @@ package project.ccard.view;
 
 import project.ccard.view.CardFrm;
 
-public class JDialog_Deposit extends javax.swing.JDialog
+public class DepositDialog extends javax.swing.JDialog
 {
     
 
     private CardFrm parentframe;
     private String name;
     
-	public JDialog_Deposit(CardFrm parent, String aname)
+	public DepositDialog(CardFrm parent, String aname)
 	{
 		super(parent);
 		parentframe=parent;

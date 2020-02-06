@@ -3,13 +3,13 @@ package project.ccard.view;
 
 import project.ccard.view.CardFrm;
 
-public class JDialog_Withdraw extends javax.swing.JDialog
+public class ChargeDialog extends javax.swing.JDialog
 {
    
     private CardFrm parentframe;
     private String name;
 
-	public JDialog_Withdraw(CardFrm parent, String aname)
+	public ChargeDialog(CardFrm parent, String aname)
 	{
 		super(parent);
 		parentframe=parent;

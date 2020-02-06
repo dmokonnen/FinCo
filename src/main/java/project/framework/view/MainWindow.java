@@ -50,7 +50,8 @@ public class MainWindow  extends javax.swing.JFrame {
 		this.addWindowListener(aSymWindow);
 	}
 
-	public void getButtonsOnRight(JPanel panel) {
+
+    public void getButtonsOnRight(JPanel panel) {
 		JButton JButton_Exit = new JButton("Exit");
 		panel.add(JButton_Exit);
 		JButton_Exit.setBounds(468,248,96,31);
@@ -116,7 +117,8 @@ public class MainWindow  extends javax.swing.JFrame {
 		JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
 	}
 
-	public List<IAccount> getAccounts() {
+	protected List<IAccount> getAccounts() {
+	
 		List<IAccount> res = new ArrayList<>();
 		customers.forEach((c)->res.addAll(c.getAccounts()));
 		return res;

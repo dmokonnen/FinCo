@@ -1,15 +1,14 @@
-package project.ccard;/*
+package project.ccard.view;/*
 		A basic implementation of the JDialog class.
 */
 
 import java.awt.*;
-import javax.swing.*;
 
-public class JDialogGenBill extends javax.swing.JDialog
+public class GenerateBillDialog extends javax.swing.JDialog
 {
     String billstring;
     
-	public JDialogGenBill(Frame parent)
+	public GenerateBillDialog(Frame parent)
 	{
 		super(parent);
 		
@@ -61,7 +60,7 @@ public class JDialogGenBill extends javax.swing.JDialog
 		//}}
 	}
 
-	public JDialogGenBill()
+	public GenerateBillDialog()
 	{
 		this((Frame)null);
 	}

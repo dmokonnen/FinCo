@@ -1,4 +1,4 @@
-package project.ccard;/*
+package project.ccard.view;/*
 		A basic implementation of the JDialog class.
 */
 

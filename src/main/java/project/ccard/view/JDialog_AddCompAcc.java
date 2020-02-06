@@ -1,5 +1,7 @@
-package project.ccard;
+package project.ccard.view;
 
+
+import project.ccard.view.CardFrm;
 
 public class JDialog_AddCompAcc extends javax.swing.JDialog
 {

@@ -50,7 +50,8 @@ public class MainWindow  extends javax.swing.JFrame {
 		this.addWindowListener(aSymWindow);
 	}
 
-	public void getButtonsOnRight(JPanel panel) {
+
+    public void getButtonsOnRight(JPanel panel) {
 		JButton JButton_Exit = new JButton("Exit");
 		panel.add(JButton_Exit);
 		JButton_Exit.setBounds(468,248,96,31);

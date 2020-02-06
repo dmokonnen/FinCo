@@ -1,6 +1,8 @@
-package project.ccard;/*
+package project.ccard.view;/*
 		A basic implementation of the JDialog class.
 */
+
+import project.ccard.view.CardFrm;
 
 public class JDialog_AddCCAccount extends javax.swing.JDialog
 {

@@ -45,7 +45,7 @@ public class CardFrm extends MainWindow
 			// get selected name
 			int selection = JTable1.getSelectionModel().getMinSelectionIndex();
 			if (selection >=0){
-				String name = (String)model.getValueAt(selection, 0);
+				String name = (String)model.getValueAt(selection, 1);
 
 				//Show the dialog for adding deposit amount for the current mane
 				DepositDialog dep = new DepositDialog(this,name);
@@ -53,11 +53,13 @@ public class CardFrm extends MainWindow
 				dep.show();
 
 				// compute new amount
-				long deposit = Long.parseLong(amountDeposit);
-				String samount = (String)model.getValueAt(selection, 4);
-				long currentamount = Long.parseLong(samount);
-				long newamount=currentamount+deposit;
-				model.setValueAt(String.valueOf(newamount),selection, 4);
+//				long deposit = 0;
+
+				double deposit = Double.parseDouble(amountDeposit);
+				String samount = (String)model.getValueAt(selection, 3);
+				double currentamount = Double.parseDouble(samount);
+				Double newamount=currentamount+deposit;
+				model.setValueAt(String.valueOf(newamount),selection, 3);
 			}
 		});
 		JButton JButton_Withdraw = new JButton("Charge");
@@ -75,10 +77,10 @@ public class CardFrm extends MainWindow
 
 				// compute new amount
 				long deposit = Long.parseLong(amountDeposit);
-				String samount = (String)model.getValueAt(selection, 4);
+				String samount = (String)model.getValueAt(selection, 3);
 				long currentamount = Long.parseLong(samount);
 				long newamount=currentamount-deposit;
-				model.setValueAt(String.valueOf(newamount),selection, 4);
+				model.setValueAt(String.valueOf(newamount),selection, 3);
 				if (newamount <0){
 					JOptionPane.showMessageDialog(JButton_Withdraw, " "+name+" Your balance is negative: $"+String.valueOf(newamount)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
 				}

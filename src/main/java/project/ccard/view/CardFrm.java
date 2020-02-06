@@ -89,10 +89,11 @@ public class CardFrm extends MainWindow
 
 	@Override
 	public void getButtonsOnTop(JPanel panel) {
+		//super.getButtonsOnTop(panel);
 		JButton JButton_NewCCAccount = new JButton("Add Credit-card account");
 		JButton_NewCCAccount.setBounds(24,20,192,33);
 		JButton_NewCCAccount.addActionListener(e -> {
-			AddCreditCardAccountDialog ccac = new AddCreditCardAccountDialog(thisframe);
+			AddCreditCardAccountDialog ccac = new AddCreditCardAccountDialog(this,customers);
 			ccac.setBounds(450, 20, 300, 380);
 			ccac.show();
 

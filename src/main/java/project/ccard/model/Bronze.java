@@ -7,9 +7,14 @@ import project.framework.model.Customer;
  * @2020
  */
 public class Bronze extends CCardAccount {
-    public Bronze(Customer customer,String accountNumber) {
+
+
+    public Bronze(Customer customer, String accountNumber) {
         this.customer=customer;
         this.accountNo=accountNumber;
+        setMinimumPayment(0.14);
+        setMonthlyInterest(0.1);
+
     }
 
     @Override

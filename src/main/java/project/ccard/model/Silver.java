@@ -10,6 +10,8 @@ public class Silver extends CCardAccount {
     public Silver(Customer customer, String accountNumber) {
         this.customer = customer;
         this.accountNo = accountNumber;
+        setMinimumPayment(0.12);
+        setMonthlyInterest(0.08);
     }
     @Override
     public Double getNewMonthlyBalance() {

@@ -10,6 +10,8 @@ public class Gold extends CCardAccount {
     public Gold(Customer customer, String accountNumber) {
         this.customer = customer;
         this.accountNo = accountNumber;
+        setMinimumPayment(0.1);
+        setMonthlyInterest(0.06);
     }
 
     @Override

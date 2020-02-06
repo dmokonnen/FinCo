@@ -1,15 +1,15 @@
 package project.ccard.controller;
 
+import project.framework.model.AccountManager;
 import project.framework.model.IAccountCommand;
-import project.framework.model.IAccountManager;
 
 /**
  * @author Demisew Mokonnen
  * @2020
  */
-public class CCardAccountManager implements IAccountManager {
+public class CCardAccountManager extends AccountManager {
     @Override
     public void executeCommand(IAccountCommand command) {
-
+        super.executeCommand(command);
     }
 }

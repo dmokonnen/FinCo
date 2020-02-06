@@ -1,5 +1,6 @@
 package project.ccard.view;
 
+import project.framework.model.IAccount;
 import project.framework.model.ICustomer;
 import project.framework.view.MainWindow;
 
@@ -109,6 +110,28 @@ public class CardFrm extends MainWindow
 		});
 		panel.add(JButton_NewCCAccount);
 		panel.add(JButton_GenBill);
+	}
+	public void drawTable() {
+		JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
+		String[] columns = new String[] {
+				"CC Number",
+				"Name",
+				"City",
+				"Amount"
+		};
+		final List<IAccount> accounts = getAccounts();
+		String[][] data = new String[accounts.size()][4];
+		for(int i=0; i<accounts.size(); i++)  {
+			IAccount a = accounts.get(i);
+			data[i] = new String[] {
+					a.getAccountNo(),
+					a.getCustomer().getName(),
+					a.getCustomer().getAddress().getCity(),
+					a.getBalance().toString()
+			};
+		}
+		model.setDataVector(data, columns);
+		JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
 	}
 
 	
